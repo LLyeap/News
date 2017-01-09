@@ -1,0 +1,129 @@
+/*
+|--------------------------------------------------------------------------
+| 清除不同浏览器默认样式, 避免适配错误
+|--------------------------------------------------------------------------
+|
+| 这个css文件在所有css文件之前引入
+| 这个文件不需要二次编写, 不必修改
+|
+*/
+
+/* reset重置浏览器样式 */
+html {
+    color: #333;
+    font-size: 10px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+html, input, button {
+    font-family: 'Microsoft Yahei', Helvetica, Arial, sans-serif;
+}
+body {
+    font-size: 1.2em;
+}
+/* 重设 HTML5 标签, */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+/* HTML5 媒体文件跟 img 保持一致*/
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+img {
+    width: 100%;
+    vertical-align: top;
+}
+/* 要注意表单元素并不继承父级 font 的问题*/
+audio, canvas, video {
+    display: inline-block;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    word-wrap: break-word;
+    word-break: break-all;
+    width: 100%;
+    vertical-align: middle;
+}
+th, td {
+    vertical-align: middle;
+}
+fieldset, img, input, button {
+    border: none;
+}
+iframe {
+    display: block;
+}
+abbr, acronym {
+    border: none;
+    font-variant: normal;
+}
+del {
+    text-decoration: line-through;
+}
+address, caption, cite, code, dfn, em, var {
+    font-style: normal;
+    font-weight: 500;
+}
+ol, ul {
+    list-style: none;
+}
+caption, th {
+    text-align: left;
+    font-weight: 700;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: bold;
+}
+h2 {
+    font-size: 2.4em;
+}
+h2>a {
+    color: #333;
+}
+h2>a:hover {
+    color: #003366;
+}
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+sup {
+    top: -0.5em;
+}
+sub {
+    bottom: -0.25em;
+}
+ins, a, a:hover {
+    text-decoration: none;
+}
+a {
+    color: #999;
+}
+a:hover, a:active {
+    outline: 0;
+}
+a:hover {
+    color:#ffcc00;
+}
+select {
+    border: 1px solid #ccc;
+}
+/*单字母勾子元素 */
+code {
+    white-space: pre;
+}
+s, u, q, i, b {
+    text-decoration: none;
+    font-style: normal;
+    font-weight: normal;
+}
+input:focus, button:focus {
+    outline: none;
+}

@@ -1,0 +1,70 @@
+/*
+|--------------------------------------------------------------------------
+| 前后台公共css样式
+|--------------------------------------------------------------------------
+|
+| 一些常用的样式在这里定义为类, 引用时添加类即可, 避免在html中嵌入style样式
+|
+*/
+
+/**
+ * 浮动
+ */
+.fl {float: left;}  /** 左浮动*/
+.fr {float: right;} /** 右浮动*/
+.fiexboth:after {content: ""; clear: both; display: table;} /** 清除浮动 */
+
+/**
+ * 显示与隐藏
+ */
+.display-show {display: block;}     /** 显示 */
+.display-hide {display: none;}      /** 隐藏 */
+.overflow-hide{ overflow: hidden;}  /** 超出的隐藏 */
+
+/**
+ * 文字样式
+ */
+.text-l {text-align: left;}     /** 文字居左 */
+.text-c {text-align: center;}   /** 文字居中 */
+.tetx-r {text-align: right;}    /** 文字居右 */
+.text-overflow {overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}    /**  */
+
+.font-size-14 {font-size: 1.4em;}   /** 14号字体 */
+.font-size-18 {font-size: 1.8em;}   /** 18号字体 */
+.font-size-24 {font-size: 2.4em;}   /** 24号字体 */
+.font-size-36 {font-size: 3.6em;}   /** 36号字体 */
+.font-nomal {font-weight: normal;}  /** 加粗正常 */
+
+/**
+ * 公共padding
+ */
+.padding-8 {padding-left: .8em; padding-right: .8em;}   /** 左右各0.8外边距 */
+.padding-top-10 {padding-top: 1em;}                     /** 上有1外边距 */
+.padding-bot-10 {padding-bottom: 1em;}                  /** 下有1外边距 */
+.padding-top-45 {padding-top: 4.5em;}                   /** 上有4.5外边距 */
+.padding-bot-45 {padding-bottom: 4.5em;}                /** 下有4.5外边距 */
+
+/**
+ * 链接颜色
+ */
+.link-white a {color: #fff;}            /** 链接正常状态为白色 */
+.link-white a:hover {color: #ffcc00;}   /** 链接鼠标放上的颜色 */
+
+/**
+ * 公共颜色
+ */
+.color-blue {color: #003366;}   /** 蓝色 */
+.color-white {color: #fff;}     /** 白色 */
+.color-red {color: #FF3030;}    /** 红色 */
+
+/**
+ * 公共bg颜色
+ */
+.bg-color-blue {background-color: #003366;} /** 背景蓝色 */
+.bg-color-gray {background-color: #f9f9f9;} /** 背景灰色 */
+
+/**
+ * 定位
+ */
+.position-r {position: relative;}   /** 相对定位 */
+.position-a {position: absolute;}   /** 绝对定位 */
