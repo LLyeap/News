@@ -11,14 +11,23 @@
 |
 */
 
-Route::group(['prefix' => 'backend', 'namespace'  => 'admin'], function () {
+Route::group(['domain' => 'admin.mysite.com', 'namespace' => 'admin'], function () {
     Route::get('/code/captcha/{tmp}', 'LoginController@captcha');
     Route::resource('/login', 'LoginController');
     Route::resource('doLogin', 'LoginController@doLogin');
     Route::resource('/logout', 'LoginController@logout');
+
+    Route::group(['middleware' => 'Admin.admin'], function () {
+        Route::get('/', function () {
+            return view('admin.index.index');
+        });
+    });
 });
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['domain' => 'www.mysite.com', 'namespace' => 'home'], function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
 });
+
 

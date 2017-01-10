@@ -131,7 +131,6 @@ class LoginController extends Controller
         $data['ip'] = $request->getClientIp();
         $info = $this->adminServer->loginCheck($data);
 
-//        return redirect('/');
-        return view('admin.index.index');
+        return redirect('/');
     }
 }

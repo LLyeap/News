@@ -27,7 +27,7 @@
         {{-- 登录主体内容框开始 --}}
         <div class="col-md-offset-3 col-md-6">
             {{-- 登录表单开始 --}}
-            <form class="form-horizontal" id="signupForm" method="post" action="{{ url('backend/doLogin') }}">
+            <form class="form-horizontal" id="signupForm" method="post" action="{{ url('/doLogin') }}">
                 {{ csrf_field() }}
                 {{-- 表单头 --}}
                 <span class="heading">用户登录</span>
@@ -45,14 +45,14 @@
                 <div class="form-group help">
                     <input type="password" class="form-control" name="password" id="password" placeholder="密　码" />
                     <i class="fa fa-lock"></i>
-                    <a href="#" onmouseover="show_pass()" onmouseleave="hide_pass()" class="fa fa-eye fa-question-circle"></a>
+                    <a href="#" onmouseover="show_pass()" onmouseleave="hide_pass()" class="fa fa-eye"></a>
                 </div>
 
                 <!-- 验证码 -->
                 <div class="form-group help">
                     <input type="text" class="form-control capt-input" name="captcha" id="captcha" placeholder="验证码" maxlength="4" />
                     <i class="fa fa-codepen"></i>
-                    <img class="img-rounded" id="img_captcha" src="{{ url('backend/code/captcha/1') }}" />
+                    <img class="img-rounded" id="img_captcha" src="{{ url('code/captcha/1') }}" />
                 </div>
 
                 <!-- 记住我 & 登录按钮 -->
@@ -137,10 +137,10 @@
      */
     var captcha = document.getElementById('img_captcha');
     captcha.onclick = function() {
-        $url = "{{ URL('backend/code/captcha') }}";
+        $url = "{{ URL('code/captcha') }}";
         $url = $url + "/" + Math.random();
         this.src = $url;
-    }
+    };
 
     /**  鼠标移入眼睛图标 - 显示密码 */
     function show_pass() {
