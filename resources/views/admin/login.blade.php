@@ -14,8 +14,8 @@
         }
         .alert-danger {padding-top: 20px;}
         .alert-danger ul li {list-style-type: none; color: red; font-size: 16px;}
-        .capt-input {width: 60%;}
-        #captcha {border: 0px; width: 100px; height: 35px; float: right; margin-top: -34px;}
+        .capt-input {width: 50%;}
+        #img_captcha {border: 0px; width: 40%; height: 40px; float: right; margin-top: -40px;}
     </style>
 </head>
 
@@ -27,7 +27,8 @@
         {{-- 登录主体内容框开始 --}}
         <div class="col-md-offset-3 col-md-6">
             {{-- 登录表单开始 --}}
-            <form class="form-horizontal" id="signupForm" action="{{ url('backend/doLogin') }}">
+            <form class="form-horizontal" id="signupForm" method="post" action="{{ url('backend/doLogin') }}">
+                {{ csrf_field() }}
                 {{-- 表单头 --}}
                 <span class="heading">用户登录</span>
 
@@ -36,29 +37,29 @@
 
                 <!-- 电子邮箱 -->
                 <div class="form-group">
-                    <input type="email" class="form-control" name="input_email" id="input_email" placeholder="电子邮件">
+                    <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" placeholder="电子邮件" />
                     <i class="fa fa-user"></i>
                 </div>
 
                 <!-- 密码 -->
                 <div class="form-group help">
-                    <input type="password" class="form-control" name="input_password" id="input_password" placeholder="密　码">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="密　码" />
                     <i class="fa fa-lock"></i>
-                    <a href="#" class="fa fa-question-circle"></a>
+                    <a href="#" onmouseover="show_pass()" onmouseleave="hide_pass()" class="fa fa-eye fa-question-circle"></a>
                 </div>
 
                 <!-- 验证码 -->
                 <div class="form-group help">
-                    <input type="text" class="form-control capt-input" name="input_captcha" id="input_captcha" placeholder="验证码" maxlength="4">
+                    <input type="text" class="form-control capt-input" name="captcha" id="captcha" placeholder="验证码" maxlength="4" />
                     <i class="fa fa-codepen"></i>
-                    <img class="img-rounded" id="captcha" src="{{ url('backend/code/captcha/1') }}"/>
+                    <img class="img-rounded" id="img_captcha" src="{{ url('backend/code/captcha/1') }}" />
                 </div>
 
                 <!-- 记住我 & 登录按钮 -->
                 <div class="form-group">
                     <div class="main-checkbox">
-                        <input type="checkbox" value="None" id="checkbox1" name="check"/>
-                        <label for="checkbox1"></label>
+                        <input type="checkbox" value="None" id="remember_check" name="check" checked />
+                        <label for="remember_check"></label>
                     </div>
                     <span class="text">Remember me</span>
                     <button type="submit" class="btn btn-default">登录</button>
@@ -93,27 +94,27 @@
             this.$signupForm.validate({
                 // 验证规则
                 rules: {
-                    input_email: {
+                    email: {
                         required: true,
                         email: true
                     },
-                    input_password: {
+                    password: {
                         required: true,
                         minlength: 5
                     },
-                    input_captcha: {
+                    captcha: {
                         required: true,
                         minlength: 4
                     }
                 },
                 // 提示信息
                 messages: {
-                    input_email: "请输入一个有效的电子邮件地址",
-                    input_password: {
+                    email: "请输入一个有效的电子邮件地址",
+                    password: {
                         required: "请输入密码",
                         minlength: "您的密码必须至少有5个字符长"
                     },
-                    input_captcha: {
+                    captcha: {
                         required: '请输入验证码',
                         minlength: "验证码必须为4位"
                     }
@@ -134,11 +135,20 @@
     /**
      * 点击验证码图片刷新验证码
      */
-    var captcha = document.getElementById('captcha');
-    captcha.onclick = function(){
+    var captcha = document.getElementById('img_captcha');
+    captcha.onclick = function() {
         $url = "{{ URL('backend/code/captcha') }}";
         $url = $url + "/" + Math.random();
         this.src = $url;
+    }
+
+    /**  鼠标移入眼睛图标 - 显示密码 */
+    function show_pass() {
+        $('#password').attr('type', 'text');
+    }
+    /**  鼠标移出眼睛图标 - 显示密码 */
+    function hide_pass() {
+        $('#password').attr('type', 'password');
     }
 </script>
 </body>
