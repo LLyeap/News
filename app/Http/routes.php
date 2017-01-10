@@ -14,6 +14,7 @@
 Route::group(['prefix' => 'backend', 'namespace'  => 'admin'], function () {
     Route::get('/code/captcha/{tmp}', 'LoginController@captcha');
     Route::resource('/login', 'LoginController');
+    Route::resource('doLogin', 'LoginController@doLogin');
     Route::resource('/logout', 'LoginController@logout');
 });
 

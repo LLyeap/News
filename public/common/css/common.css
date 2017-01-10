@@ -44,6 +44,8 @@
 .padding-top-45 {padding-top: 4.5em;}                   /** 上有4.5外边距 */
 .padding-bot-45 {padding-bottom: 4.5em;}                /** 下有4.5外边距 */
 
+.margin-top-10 {margin-top: 100px;}
+
 /**
  * 链接颜色
  */
@@ -68,3 +70,8 @@
  */
 .position-r {position: relative;}   /** 相对定位 */
 .position-a {position: absolute;}   /** 绝对定位 */
+
+/**
+ * 信息提示
+ */
+.error {color: #ff0000; font-weight: 500; font-size: 13px;} /** 错误信息 */

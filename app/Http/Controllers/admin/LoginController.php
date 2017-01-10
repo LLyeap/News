@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Tools\Common;
 
 class LoginController extends Controller
 {
@@ -81,5 +82,19 @@ class LoginController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function captcha($tmp)
+    {
+//        // 判断cookie是否在5分钟内注册
+//        $cookieRes = Common::checkCookie('admin', '登陆');
+//        if ($cookieRes != 'ok') return response()->json(['ServerNo' => 400, 'msg' => '获取验证码失败']);
+
+        return Common::captcha($tmp);
+    }
+
+    public function doLogin()
+    {
+        return back()->withErrors('验证码错误!');
     }
 }
