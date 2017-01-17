@@ -1,6 +1,36 @@
-<script src="{{ asset('/common/js/vue.js') }}" type="text/javascript"></script>
+{{--<script src="{{ asset('/common/js/vue.js') }}" type="text/javascript"></script>--}}
 
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="{{ asset('admin/public/js/jquery.js') }}"></script>
+<script src="{{ asset('admin/public/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('admin/public/js/modernizr.min.js') }}"></script>
+<script src="{{ asset('admin/public/js/pace.min.js') }}"></script>
+<script src="{{ asset('admin/public/js/wow.min.js') }}"></script>
+<script src="{{ asset('admin/public/js/jquery.scrollto.min.js') }}"></script>
+<script src="{{ asset('admin/public/js/jquery.nicescroll.js') }}"></script>
+
+<!-- Counter-up -->
+<script src="{{ asset('admin/public/js/waypoints.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('admin/public/js/jquery.counterup.min.js') }}" type="text/javascript"></script>
+
+<!-- sparkline -->
+<script src="{{ asset('admin/public/js/jquery.sparkline.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('admin/public/js/chart-sparkline.js') }}" type="text/javascript"></script>
+
+<!-- skycons -->
+<script src="{{ asset('admin/public/js/skycons.min.js') }}" type="text/javascript"></script>
+
+<!--Morris Chart-->
+<script src="{{ asset('admin/public/js/morris.min.js') }}"></script>
+<script src="{{ asset('admin/public/js/raphael.min.js') }}"></script>
+
+<script src="{{ asset('admin/public/js/jquery.app.js') }}"></script>
+
+<!-- Dashboard -->
+<script src="{{ asset('admin/public/js/jquery.dashboard.js') }}"></script>
+
+<!--alertInfo JS-->
+<script src="{{ asset('admin/public/js/classie.js') }}"></script>
+<script src="{{ asset('admin/public/js/modaleffects.js') }}"></script>
+<!--alertInfo end-->
+
