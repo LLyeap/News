@@ -1,8 +1,8 @@
 {{--<script src="{{ asset('/common/js/vue.js') }}" type="text/javascript"></script>--}}
 
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="{{ asset('admin/public/js/jquery.js') }}"></script>
-<script src="{{ asset('admin/public/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('common/js/jquery.js') }}"></script>
+<script src="{{ asset('common/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('admin/public/js/modernizr.min.js') }}"></script>
 <script src="{{ asset('admin/public/js/pace.min.js') }}"></script>
 <script src="{{ asset('admin/public/js/wow.min.js') }}"></script>

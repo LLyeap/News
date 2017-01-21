@@ -1,0 +1,148 @@
+/**
+ * 内容: 这里主要写网站首页的顶部和底部的样式
+ * 日期: 2017.01.21
+ */
+
+/** **************************************** */
+/**            header 样式开始                 */
+/** **************************************** */
+
+/** -- header -- */
+.navbar-default {
+  border-color: #e7e7e7;
+  background-color: #fff;
+  box-shadow: 0px 1px 11px 2px rgba(42, 42, 42, 0.1);
+  border-top: 4px solid #4876FF;
+}
+
+/** -- 导航栏左侧 -- */
+.navbar-brand {
+  padding: 20px 15px;
+  font-size: 20px;
+} /** logo样式 */
+.main-color {
+  color: #f46660;
+} /** logo的颜色 */
+.text-bold {
+  font-weight: bold;
+} /** logo的字体样式 */
+.navbar-nav > li > a {
+  line-height: 32px;
+  font-size: 16px;
+  color: #8e8e8e;
+} /** 导航栏目连接样式 */
+
+/** -- 导航栏右侧 -- */
+.navbar-form {
+  width: auto;
+  padding-top: 10px;
+  padding-bottom: 0;
+  margin-right: 0;
+  margin-left: 0;
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+} /** 搜索区域样式 */
+.navbar-form .form-group {
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align: middle;
+} /** 搜索框和搜索按钮公共样式 */
+.navbar-form .form-control {
+   border-radius: 2px;
+   border: none;
+   box-shadow: none;
+   border-left: 1px solid #ccc;
+   height: 32px;
+} /** 搜索框样式 */
+.navbar-form .search-btn {
+  border: 0px;
+  background: transparent;
+  padding: 0px;
+} /** 搜索按钮样式 */
+
+
+
+
+
+/** **************************************** */
+/**            footer 样式开始                 */
+/** **************************************** */
+
+/** -- footer -- */
+.footer{
+  padding: 3em 0;
+  margin-top: 100px;
+  background: #2B2B2B;
+}
+.footer-grid h3{
+  color: #FFFFFF;
+  font-size: 2em;
+  margin: 0 0 1em 0;
+  font-family: '';
+}
+.footer-grid ul{
+  padding:0;
+  margin:0;
+}
+.footer-grid ul li{
+  display: block;
+  margin: .5em 0;
+  color: #A2A2A2;
+  font-size: .9em;
+}
+.footer-grid ul li a{
+  color: #A2A2A2;
+  font-size: 1em;
+  text-decoration: none;
+}
+.footer-grid ul li a:hover{
+  color:#FFF;
+}
+.footer-grid input[type="text"] {
+  font-size: .9em;
+  color: #696969;
+  margin-bottom: 1em;
+  width: 100% !important;
+  outline: none;
+  border: none;
+  background: #FFFFFF;
+  padding: .8em;
+  -webkit-appearance: none;
+}
+.footer-grid input[type="submit"] {
+  color: #FFF;
+  background: #ff6a4a;
+  font-size: .9em;
+  border: none;
+  outline: none;
+  padding: .5em 1em;
+  -webkit-appearance: none;
+}
+.footer-grid input[type="submit"]:hover{
+  background: #000;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+}
+
+/** -- footer-bottom -- */
+.footer-bottom{
+  padding: 1em 0;
+  background: #191919;
+}
+.footer-bottom p{
+  color:#FFF;
+  margin:0;
+  text-align:center;
+  font-size:.9em;
+}
+.footer-bottom p a{
+  color:#ff6a4a;
+  text-decoration:none;
+}
+.footer-bottom p a:hover{
+  color:#FFF;
+}

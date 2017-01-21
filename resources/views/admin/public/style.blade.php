@@ -3,18 +3,18 @@
 
 
 {{--<link rel="shortcut icon" href="http://cdn.rooyun.com/img/favicon_1.ico">--}}
-<!-- Bootstrap 核心 CSS 样式 -->
-<link href="{{ asset('admin/public/css/bootstrap.min.css') }}" rel="stylesheet" />
 <!-- Bootstrap 清除浏览器样式样式 -->
-<link href="{{ asset('admin/public/css/bootstrap-reset.css') }}" rel="stylesheet" />
+<link href="{{ asset('common/css/bootstrap-reset.css') }}" rel="stylesheet" />
+<!-- Bootstrap 核心 CSS 样式 -->
+<link href="{{ asset('common/css/bootstrap.min.css') }}" rel="stylesheet" />
+
+<!-- 字体库图标 CSS 样式 -->
+<link href="{{ asset('common/css/font-awesome.css') }}" rel="stylesheet" />
+<link href="{{ asset('common/css/ionicons.min.css') }}" rel="stylesheet" />
+<link href="{{ asset('common/css/material-design-iconic-font.min.css') }}" rel="stylesheet" />
 
 <!--动画 CSS 样式 -->
 <link href="{{ asset('admin/public/css/animate.css') }}" rel="stylesheet" />
-
-<!-- 字体库图标 CSS 样式 -->
-<link href="{{ asset('admin/public/css/font-awesome.css') }}" rel="stylesheet" />
-<link href="{{ asset('admin/public/css/ionicons.min.css') }}" rel="stylesheet" />
-<link href="{{ asset('admin/public/css/material-design-iconic-font.min.css') }}" rel="stylesheet" />
 
 <!--Morris Chart CSS -->
 <link href="{{ asset('admin/public/css/morris.css') }}" rel="stylesheet" />

@@ -26,7 +26,7 @@ Route::group(['domain' => 'admin.mysite.com', 'namespace' => 'admin'], function 
 
 Route::group(['domain' => 'www.mysite.com', 'namespace' => 'home'], function () {
     Route::get('/', function () {
-        return view('welcome');
+        return view('home.index.index');
     });
 });
 
