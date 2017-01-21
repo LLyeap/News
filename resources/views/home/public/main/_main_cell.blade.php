@@ -29,8 +29,6 @@
         </a>
     </article>
 
-
-
     {{--@foreach ($posts as $post)--}}
         {{--<article class="col-md-4 pic-block">--}}
             {{--<a class="shodow-box" href="#">--}}

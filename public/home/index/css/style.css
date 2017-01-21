@@ -1,3 +1,15 @@
+/**
+ * 内容: 这里主要写网站首页除顶部和底部外的内容
+ * 说明: 顶部底部css样式写在../../public/css/style.css中
+ * 问题: 轮播图的左右箭头有问题(字体库)
+ * 日期: 2017.01.21
+ */
+
+/** **************************************** */
+/**            首页主要样式开始                 */
+/** **************************************** */
+
+/** -- 全局内容区域 -- */
 .container {
     margin-right: auto;
     margin-left: auto;
@@ -5,17 +17,19 @@
     padding-right: 15px;
 }
 
-
+/** -- banner轮播图 -- */
+.carousel {
+    margin-top: 20px;
+}
 .carousel-inner .item img {
     /*width: 800px;*/
     height: 450px;
 }
 
-
+/** -- 各小块标题及更多 -- */
 .add-top-half {
     margin-top: 20px;
 }
-
 .block-header {
     padding: 10px;
     color: #717171;
@@ -26,7 +40,6 @@
     margin-bottom: 15px;
     font-size: 25px;
 }
-
 .block-header h2 .read-more {
     font-size: 15px;
     color: #716e6e;
@@ -35,11 +48,9 @@
 .pull-right {
     float: right !important;
 }
-
 .block-header a {
     color: #a7a9ab;
 }
-
 .fa {
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
@@ -49,9 +60,7 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-
-
-
+/** -- 首页box盒子 -- */
 .pic-block {
     padding: 0 15px;
 }
@@ -69,7 +78,6 @@
 a, a:hover, a:focus {
     text-decoration: none;
 }
-
 .home-list .pic-block img {
     width: 360px;
     height: 189px;
@@ -85,7 +93,6 @@ a, a:hover, a:focus {
     max-width: 100%;
     height: auto;
 }
-
 .pic-block h4, .pic-block .pic-header {
     padding: 10px;
     font-size: 18px;
@@ -96,19 +103,10 @@ a, a:hover, a:focus {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
 .pic-block h4, .pic-block .pic-header {
     background: #fff;
     padding: 10px;
     font-size: 14px;
     line-height: 21px;
-}
-
-
-
-
-
-.newcolor {
-    color: red;
 }
 

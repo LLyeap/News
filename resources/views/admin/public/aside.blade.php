@@ -5,7 +5,7 @@
     <div class="logo">
         <a href="{{url('/')}}" class="logo-expanded">
             <i class="ion-social-buffer"></i>
-            <span class="nav-label">JIANGU</span>
+            <span class="nav-label">JLNU</span>
         </a>
     </div>
     <!-- / brand -->
@@ -17,35 +17,34 @@
             <li class="active"><a href="{{url('/')}}"><i class="zmdi zmdi-view-dashboard"></i> <span class="nav-label">首页</span></a></li>
 
             <li class="has-submenu">
-                <a href="#"><i class="zmdi zmdi-format-underlined"></i> <span class="nav-label">用户模块</span><span class="menu-arrow"></span></a>
+                <a href="#"><i class="zmdi zmdi-format-underlined"></i> <span class="nav-label">用户管理</span><span class="menu-arrow"></span></a>
                 <ul class="list-unstyled">
-                    <li><a href="{{url('user_list')}}">用户列表</a></li>
-                    <li><a href="{{url('user_checkout')}}">提现列表</a></li>
-                    <li><a href="{{url('card/create')}}">银行类型添加</a></li>
-                    <li><a href="{{url('card')}}">银行类型列表</a></li>
+                    <li><a href="#">所有用户</a></li>
+                    <li><a href="#">新建用户</a></li>
                 </ul>
             </li>
 
             <li class="has-submenu">
-                <a href="#"><i class="zmdi zmdi-format-underlined"></i> <span class="nav-label">模拟模块</span><span class="menu-arrow"></span></a>
+                <a href="#"><i class="zmdi zmdi-collection-text"></i> <span class="nav-label">文章管理</span><span class="menu-arrow"></span></a>
                 <ul class="list-unstyled">
-                    <li><a href="{{url('user_demo_list')}}">模拟库用户列表</a></li>
-                    <li><a href="{{url('order_demo_list')}}">模拟库当前订单</a></li>
-                    <li><a href="{{url('vend_demo_list')}}">模拟库平仓订单</a></li>
-                    <li><a href="{{url('reserve_demo_list')}}">模拟库挂单</a></li>
+                    <li><a href="#">所有文章</a></li>
+                    <li><a href="#">新建文章</a></li>
                 </ul>
             </li>
 
-            <li class="has-submenu"><a href="#"><i class="zmdi zmdi-album"></i> <span class="nav-label">交易模块</span><span class="menu-arrow"></span></a>
+            <li class="has-submenu"><a href="#"><i class="zmdi zmdi-album"></i> <span class="nav-label">分类管理</span><span class="menu-arrow"></span></a>
                 <ul class="list-unstyled">
-                    <li><a href="{{url('trade_order')}}">查询订单</a></li>
+                    <li><a href="#">所有分类</a></li>
+                    <li><a href="#">新建分类</a></li>
                 </ul>
             </li>
 
-            <li class="has-submenu"><a href="#"><i class="zmdi zmdi-collection-text"></i> <span class="nav-label">网站管理</span><span class="menu-arrow"></span></a>
+            <li class="has-submenu"><a href="#"><i class="zmdi zmdi-power"></i> <span class="nav-label">网站管理</span><span class="menu-arrow"></span></a>
                 <ul class="list-unstyled">
-                    <li><a href="{{url('recover_cache')}}">一键缓存</a></li>
-                    <li><a href="{{url('feed_back')}}">意见反馈列表</a></li>
+                    <li><a href="#">导航栏</a></li>
+                    <li><a href="#">友情链接</a></li>
+                    <li><a href="#">一键停用</a></li>
+                    <li><a href="#">版权</a></li>
                 </ul>
             </li>
 
