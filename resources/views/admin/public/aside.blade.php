@@ -19,7 +19,7 @@
             <li class="has-submenu">
                 <a href="#"><i class="zmdi zmdi-format-underlined"></i> <span class="nav-label">用户管理</span><span class="menu-arrow"></span></a>
                 <ul class="list-unstyled">
-                    <li><a href="#">所有用户</a></li>
+                    <li><a href="#">用户列表</a></li>
                     <li><a href="#">新建用户</a></li>
                 </ul>
             </li>
@@ -27,14 +27,14 @@
             <li class="has-submenu">
                 <a href="#"><i class="zmdi zmdi-collection-text"></i> <span class="nav-label">文章管理</span><span class="menu-arrow"></span></a>
                 <ul class="list-unstyled">
-                    <li><a href="#">所有文章</a></li>
+                    <li><a href="#">文章列表</a></li>
                     <li><a href="#">新建文章</a></li>
                 </ul>
             </li>
 
             <li class="has-submenu"><a href="#"><i class="zmdi zmdi-album"></i> <span class="nav-label">分类管理</span><span class="menu-arrow"></span></a>
                 <ul class="list-unstyled">
-                    <li><a href="#">所有分类</a></li>
+                    <li><a href="#">分类列表</a></li>
                     <li><a href="#">新建分类</a></li>
                 </ul>
             </li>

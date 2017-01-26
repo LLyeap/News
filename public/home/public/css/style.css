@@ -14,6 +14,9 @@
   box-shadow: 0px 1px 11px 2px rgba(42, 42, 42, 0.1);
   border-top: 4px solid #4876FF;
 }
+.navbar {
+  margin-bottom: 40px;
+} /** 修改bootstrap默认的导航外下边距样式(20px) */
 
 /** -- 导航栏左侧 -- */
 .navbar-brand {

@@ -58,7 +58,7 @@
                 <!-- 记住我 & 登录按钮 -->
                 <div class="form-group">
                     <div class="main-checkbox">
-                        <input type="checkbox" value="None" id="remember_check" name="check" checked />
+                        <input type="checkbox" value="checked" id="remember_check" name="check" checked />
                         <label for="remember_check"></label>
                     </div>
                     <span class="text">Remember me</span>

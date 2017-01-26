@@ -13,6 +13,6 @@ class AdminService
 
     public function loginCheck($data)
     {
-
+        \Log::error('data', $data);
     }
 }

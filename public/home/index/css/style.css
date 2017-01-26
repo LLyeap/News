@@ -18,9 +18,6 @@
 }
 
 /** -- banner轮播图 -- */
-.carousel {
-    margin-top: 20px;
-}
 .carousel-inner .item img {
     /*width: 800px;*/
     height: 450px;

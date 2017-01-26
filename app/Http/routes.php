@@ -28,6 +28,12 @@ Route::group(['domain' => 'www.mysite.com', 'namespace' => 'home'], function () 
     Route::get('/', function () {
         return view('home.index.index');
     });
+    Route::get('/list', function () {
+        return view('home.list.index');
+    });
+    Route::get('/detail', function () {
+        return view('home.detail.index');
+    });
 });
 
 

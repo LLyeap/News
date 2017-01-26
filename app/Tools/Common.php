@@ -106,4 +106,20 @@ class Common
         $file = $path . DIRECTORY_SEPARATOR . $fileName . '.jpeg';
         return response(file_get_contents($file), 200);
     }
+
+    /**
+     * 生成经过变形的md5密码串
+     *
+     * @param $password 原型密码
+     * @return mixed    经过变形的md5密码
+     */
+    public static function myMd5Password($password)
+    {
+        $str = md5($password);
+        $str_before = substr($str, 0, 2);
+        $str_after  = substr($str, 2);
+        $str = $str_after . $str_before;
+
+        return $str;
+    }
 }

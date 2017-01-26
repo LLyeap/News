@@ -129,6 +129,7 @@ class LoginController extends Controller
 
         /** 4> 补充数据, 转到service层处理 */
         $data['ip'] = $request->getClientIp();
+
         $info = $this->adminServer->loginCheck($data);
 
         return redirect('/');

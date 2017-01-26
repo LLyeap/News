@@ -16,3 +16,7 @@
 <link href="{{ asset('home/public/css/style.css') }}" rel="stylesheet" />
 
 <link href="{{ asset('home/index/css/style.css') }}" rel="stylesheet" />
+
+<link href="{{ asset('home/list/css/style.css') }}" rel="stylesheet" />
+
+<link href="{{ asset('home/detail/css/style.css') }}" rel="stylesheet" />
