@@ -128,10 +128,17 @@ class LoginController extends Controller
         }
 
         /** 4> 补充数据, 转到service层处理 */
+        unset($data['captcha']);
         $data['ip'] = $request->getClientIp();
 
-        $info = $this->adminServer->loginCheck($data);
+        /** 5> Service验证用户 */
+        $result = $this->adminServer->loginCheck($data);
 
-        return redirect('/');
+        /** 6> 根据Service状态返回情况 */
+        if ($result['status']) {
+            return redirect('/');
+        } else {
+            return back()->withErrors($result['message']);
+        }
     }
 }
