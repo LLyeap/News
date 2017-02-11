@@ -14,12 +14,12 @@
     <nav class="navigation">
         <ul class="list-unstyled">
 
-            <li class="active"><a href="{{url('/')}}"><i class="zmdi zmdi-view-dashboard"></i> <span class="nav-label">首页</span></a></li>
+            <li class="active"><a href="{{ url('/') }}"><i class="zmdi zmdi-view-dashboard"></i> <span class="nav-label">首页</span></a></li>
 
             <li class="has-submenu">
                 <a href="#"><i class="zmdi zmdi-format-underlined"></i> <span class="nav-label">用户管理</span><span class="menu-arrow"></span></a>
                 <ul class="list-unstyled">
-                    <li><a href="#">用户列表</a></li>
+                    <li><a href="{{ url('admin_user') }}">用户列表</a></li>
                     <li><a href="#">新建用户</a></li>
                 </ul>
             </li>
@@ -27,8 +27,8 @@
             <li class="has-submenu">
                 <a href="#"><i class="zmdi zmdi-collection-text"></i> <span class="nav-label">文章管理</span><span class="menu-arrow"></span></a>
                 <ul class="list-unstyled">
-                    <li><a href="#">文章列表</a></li>
-                    <li><a href="#">新建文章</a></li>
+                    <li><a href="#">内容列表</a></li>
+                    <li><a href="#">新建内容</a></li>
                 </ul>
             </li>
 

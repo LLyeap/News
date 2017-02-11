@@ -21,8 +21,11 @@ Route::group(['domain' => 'admin.mysite.com', 'namespace' => 'admin'], function 
         Route::get('/', function () {
             return view('admin.index.index');
         });
+        Route::resource('admin_user', 'AdminUserController');
+        Route::resource('admin_user_info', 'AdminUserController@getAdminUserInfo');
     });
 });
+
 
 Route::group(['domain' => 'www.mysite.com', 'namespace' => 'home'], function () {
     Route::get('/', function () {

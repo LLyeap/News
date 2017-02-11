@@ -23,7 +23,7 @@ class LoginController extends Controller
     public function index()
     {
         $cookie = Common::createCookie('admin');
-        return response()->view('admin.login')->withCookie($cookie);
+        return response()->view('admin.login.login')->withCookie($cookie);
     }
 
     /**
@@ -140,5 +140,11 @@ class LoginController extends Controller
         } else {
             return back()->withErrors($result['message']);
         }
+    }
+
+    public function logout()
+    {
+        Session::flush();
+        return redirect('/login');
     }
 }

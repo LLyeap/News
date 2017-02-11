@@ -16,9 +16,9 @@ class AdminMiddleware
      */
     public function handle( $request, Closure $next )
     {
-//        if(empty(Session::get('admin'))) {
-//            return redirect( '/login' );
-//        }
+        if(empty(Session::get('admin'))) {
+            return redirect( '/login' );
+        }
         return $next($request);
     }
 }
