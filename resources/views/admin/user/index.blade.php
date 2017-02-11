@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 {{-- 标题 --}}
-@section('title', '首页')
+@section('title', '用户管理')
 
 {{-- CSS样式开始 --}}
 @section('styles')

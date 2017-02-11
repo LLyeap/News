@@ -26,7 +26,7 @@ class ContentController extends Controller
      */
     public function create()
     {
-        //
+        return response()->view('admin.content.create');
     }
 
     /**
@@ -83,5 +83,30 @@ class ContentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function uploadImage(Request $request)
+    {
+        $path = 'uploads/images';
+        $pic = $request->file('editormd-image-file');
+
+        if ($pic->isValid()) {
+            $newName = md5(rand(1, 1000) . $pic->getClientOriginalName()) . '.' . $pic->getClientOriginalExtension();
+            $pic->move($path, $newName);
+            $message = '上传成功';
+            $url     = asset($path . '/' . $newName);
+        } else {
+            $message = '图片不合法';
+            $url     = '';
+        }
+
+        $data = array(
+            'success' => ($message == '上传成功') ? 1 : 0,
+            'message' => $message,
+            'url'     => $url
+        );
+
+        header('Content-Type:application/json;charset=utf8');
+        return response()->json($data);
     }
 }

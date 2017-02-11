@@ -28,7 +28,7 @@
                 <a href="#"><i class="zmdi zmdi-collection-text"></i> <span class="nav-label">文章管理</span><span class="menu-arrow"></span></a>
                 <ul class="list-unstyled">
                     <li><a href="#">内容列表</a></li>
-                    <li><a href="#">新建内容</a></li>
+                    <li><a href="content/create">新建内容</a></li>
                 </ul>
             </li>
 

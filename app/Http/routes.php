@@ -23,6 +23,8 @@ Route::group(['domain' => 'admin.mysite.com', 'namespace' => 'admin'], function 
         });
         Route::resource('admin_user', 'AdminUserController');
         Route::resource('admin_user_info', 'AdminUserController@getAdminUserInfo');
+        Route::resource('content', 'ContentController');
+        Route::resource('upload_image', 'ContentController@uploadImage');
     });
 });
 

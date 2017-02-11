@@ -36,6 +36,7 @@ class DAdminUserStore
     public function getPageData($nowPage)
     {
         return DB::table($this->table)
+            ->select('id', 'email', 'last_login_ip', 'last_login_time', 'remember_me')
             ->forPage($nowPage, ADMIN_PAGE_NUM)
             ->orderBy('id', 'asc')
             ->get();
