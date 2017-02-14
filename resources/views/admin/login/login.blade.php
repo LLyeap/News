@@ -27,7 +27,7 @@
         {{-- 登录主体内容框开始 --}}
         <div class="col-md-offset-3 col-md-6">
             {{-- 登录表单开始 --}}
-            <form class="form-horizontal" id="signupForm" method="post" action="{{ url('/doLogin') }}">
+            <form class="form-horizontal" id="signup-form" method="post" action="{{ url('/doLogin') }}">
                 {{ csrf_field() }}
                 {{-- 表单头 --}}
                 <span class="heading">用户登录</span>
@@ -131,6 +131,7 @@
         $.FormValidator.init()
     }(window.jQuery);
 </script>
+
 <script>
     /**
      * 点击验证码图片刷新验证码

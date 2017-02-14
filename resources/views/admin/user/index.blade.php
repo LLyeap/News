@@ -47,6 +47,10 @@
         </div> {{-- 内容数据结束 --}}
     </div> {{-- 内容面板结束 --}}
 
+    <!-- 模态框开始 -->
+    @include('admin/user/_model')
+    <!-- 模态框开始 -->
+
 @endsection {{-- 主题内容结束 --}}
 
 {{-- JS开始 --}}
@@ -59,7 +63,8 @@
     function getData(url) {
         var myAjax = new MyAjax();
         myAjax.url = url;
-        myAjax.type = 'get';
+        myAjax.type = 'GET';
+        myAjax.data = {};
         myAjax.beforeSend = function () {
             $('#table').html('');
             $('#page').html('');
@@ -70,15 +75,12 @@
                 var myTable = new MyTable();
                 myTable.setCaption('用户列表');
                 myTable.setTh(['邮箱', '操作']);
-                console.log();
                 myTable.setData(data.ResultData.pageData);
-//                console.log(myTable.getTable());
                 // 显示表格数据
                 $('#table').html(myTable.getTable());
 
                 // 显示分页
                 $('#page').html(data.ResultData.pageInfo);
-
                 // 递归分页
                 $('.pagination li').click(function () {
                     var class_name = $(this).prop('class');
@@ -102,5 +104,79 @@
     }
     getData('http://admin.mysite.com/admin_user_info?totalPage=&nowPage=1');
 
+
+    // 解决jq无法直接获得动态加载的dom节点的问题
+    // 解决办法:事件委托 - http://www.css88.com/jqapi-1.9/on/
+    $(document).on('click','#update',function(){
+        // $(this) - 获得当前的按钮(这里不可以用$(#update), 这样就只能获得第一个了)
+        var update_id = $(this).val();
+        var myAjax = new MyAjax();
+        myAjax.url = 'admin_user/' + update_id + '/edit';
+        myAjax.type = 'GET';
+        myAjax.data = {};
+        myAjax.success = function (data) {
+            if (data.ServerNo == 200) {
+                $('#myModalTitle').html('修改用户: ' + data.ResultData.email + '的信息');
+                $('#id').val(data.ResultData.id);
+                $('#email').val(data.ResultData.email);
+                $('#last_login_ip').val(data.ResultData.last_login_ip);
+                $('#last_login_time').val(data.ResultData.last_login_time);
+                $('#remember_me').val(data.ResultData.remember_me);
+            } else {
+                alert(data.ResultData);
+            }
+        };
+        myAjax.error = function(XMLHttpRequest) {
+            alert('err');
+            console.log(XMLHttpRequest);
+        };
+        myAjax.excuteAjax();
+    });
+
+
+    $(document).on('click','#delete',function(){
+        // $(this) - 获得当前的按钮(这里不可以用$(#update), 这样就只能获得第一个了)
+        var delete_id = $(this).val();
+        var myAjax = new MyAjax();
+        myAjax.url = 'admin_user/' + delete_id;
+        myAjax.type = 'DELETE';
+        myAjax.data = {};
+        myAjax.success = function (data) {
+            alert(data.ResultData);
+        };
+        myAjax.error = function(XMLHttpRequest) {
+            alert('err');
+            console.log(XMLHttpRequest);
+        };
+        myAjax.excuteAjax();
+    });
+
+
+    $('#submit-modal').click(function () {
+        var reset_password = $('#reset_password').val();
+        if (reset_password == '' || reset_password.length < 5) {
+            alert('重置密码不合法');
+        } else {
+            var update_id = $('#id').val();
+            var myAjax = new MyAjax();
+            myAjax.url = 'admin_user/' + update_id;
+            myAjax.type = 'PUT';
+            myAjax.data = {
+                reset_password : reset_password
+            };
+            myAjax.success = function (data) {
+                alert(data.ResultData);
+                // ?? 为什么弹窗时间会影响下面的模态框隐藏
+                if (data.ServerNo == 200) {
+                    $('#submit-modal').attr('data-dismiss', 'modal');
+                }
+            };
+            myAjax.error = function(XMLHttpRequest) {
+                alert('err');
+                console.log(XMLHttpRequest);
+            };
+            myAjax.excuteAjax();
+        }
+    });
 </script>
 @endsection {{-- JS结束 --}}

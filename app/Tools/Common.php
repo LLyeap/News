@@ -122,4 +122,26 @@ class Common
 
         return $str;
     }
+
+    /**
+     * 通用json格式返回
+     *
+     * @param $result service层查询数据库后返回的数组
+     * @return array  返回给Controller进行json返回的json格式数据
+     */
+    public static function Res($result)
+    {
+        if ($result['status']) { // 如果service层返回正确
+            return ['ServerNo' => 200, 'ResultData' => $result['message']];
+        } else { // service层返回错误
+            switch ($result['type']){ // 判断错误类型
+                case 'danger':
+                    return ['ServerNo' => 400, 'ResultData' => $result['message']];
+                case 'err':
+                    return ['ServerNo' => 500, 'ResultData' => $result['message']];
+                default :
+                    return ['ServerNo' => 500, 'ResultData' => '未知错误'];
+            }
+        }
+    }
 }

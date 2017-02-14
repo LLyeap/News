@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Tools\Common;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Tools\CustomPage;
 use App\Services\AdminService;
 
+/**
+ * 后台管理员用户管理控制器
+ *
+ * Class AdminUserController
+ * @package App\Http\Controllers\admin
+ */
 class AdminUserController extends Controller
 {
-    protected $adminServer = null;
+    protected $adminServer = null;  // AdminService
 
+    /** 构造方法 */
     public function __construct(AdminService $adminServer)
     {
         $this->adminServer = $adminServer;
@@ -33,7 +40,7 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        //
+        return response()->view('admin.user.create');
     }
 
     /**
@@ -44,7 +51,21 @@ class AdminUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+
+        /** 1> 对数据做基础校验 */
+        // 1.1 验证验证规则正确性
+        $this->validate($request, [
+            'email'    => 'required|email',
+            'password' => 'required|min:5'
+        ]);
+
+        $result = $this->adminServer->addAdminUserInfo($data);
+        if ($result['status']) { // 如果service层返回正确
+            return response()->view('admin.user.index');
+        } else { // service层返回错误
+            return back()->withErrors($result['message']);
+        }
     }
 
     /**
@@ -66,7 +87,8 @@ class AdminUserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $result = $this->adminServer->getAdminUserInfoById($id);
+        return response()->json(Common::Res($result));
     }
 
     /**
@@ -78,7 +100,10 @@ class AdminUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except('_token');
+
+        $result = $this->adminServer->updateAdminUserInfoById($data, $id);
+        return response()->json(Common::Res($result));
     }
 
     /**
@@ -89,30 +114,21 @@ class AdminUserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = $this->adminServer->deleteAdminUserInfoById($id);
+        return response()->json(Common::Res($result));
     }
 
+    /**
+     * 获得管理员用户的信息(分页)
+     *
+     * @param Request $request                  前端请求
+     * @return \Illuminate\Http\JsonResponse    返回json信息
+     */
     public function getAdminUserInfo(Request $request)
     {
-        $data = $request->except('token');
+        $data = $request->except('_token');
 
         $result = $this->adminServer->getAdminUserInfoList($data);
-        return response()->json($this->Res($result));
-    }
-
-    protected function Res($result)
-    {
-        if ($result['status']) { // 如果service层返回正确
-            return ['ServerNo' => 200, 'ResultData' => $result['message']];
-        } else { // service层返回错误
-            switch ($result['type']){ // 判断错误类型
-                case 'danger':
-                    return ['ServerNo' => 400, 'ResultData' => $result['message']];
-                case 'err':
-                    return ['ServerNo' => 500, 'ResultData' => $result['message']];
-                default :
-                    return ['ServerNo' => 500, 'ResultData' => '未知错误'];
-            }
-        }
+        return response()->json(Common::Res($result));
     }
 }

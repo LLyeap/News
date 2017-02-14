@@ -5,18 +5,18 @@ namespace App\Stores;
 use Illuminate\Support\Facades\DB;
 
 /**
- * 管理员用户CURD Store层
+ * 导航CURD Store层
  *
- * Class DAdminUserStore
+ * Class DCategoryStore
  * @package App\Stores
  */
-class DAdminUserStore
+class DLinkStore
 {
     // 表名
-    protected $table = 'data_admin_user';
+    protected $table = 'data_link_info';
 
     /**
-     * 新增一条管理员用户信息
+     * 新增一条导航信息
      *
      * @param $data 新增的信息内容
      * @return bool 插入是否成功
@@ -30,7 +30,7 @@ class DAdminUserStore
     }
 
     /**
-     * 根据某条件获得查询得到的第一条用户信息
+     * 根据某条件获得查询得到的第一条导航信息
      *
      * @param $where    查询条件
      * @return bool     查询结果
@@ -45,7 +45,7 @@ class DAdminUserStore
     }
 
     /**
-     * 根据某条件修改管理员用户的信息
+     * 根据某条件修改导航的信息
      *
      * @param $where    修改条件
      * @param $update   修改数据
@@ -61,7 +61,7 @@ class DAdminUserStore
     }
 
     /**
-     * 根据某条件删除用户信息(硬删除 - 没调用)
+     * 根据某条件删除导航(硬删除)
      *
      * @param $where    删除条件
      * @return bool     删除结果
@@ -76,7 +76,7 @@ class DAdminUserStore
     }
 
     /**
-     * 获得用户总条数(分页用)
+     * 获得导航总条数(分页用)
      *
      * @return mixed    总条数
      */
@@ -87,7 +87,7 @@ class DAdminUserStore
     }
 
     /**
-     * 获得请求页的用户数据
+     * 获得请求页的导航数据
      *
      * @param $nowPage  请求页
      * @return mixed    该页用户数据
@@ -95,7 +95,6 @@ class DAdminUserStore
     public function getPageData($nowPage)
     {
         return DB::table($this->table)
-            ->select('id', 'email', 'last_login_ip', 'last_login_time', 'remember_me', 'status')
             ->forPage($nowPage, ADMIN_PAGE_NUM)
             ->orderBy('id', 'asc')
             ->get();

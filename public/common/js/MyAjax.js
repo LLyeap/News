@@ -28,6 +28,7 @@ p1.eat();
 function MyAjax() {
     this._url = '';
     this._type = '';
+    this._data = {};
     this._beforeSend = function () {};
     this._success = function () {};
     this._error = function () {};
@@ -45,6 +46,13 @@ function MyAjax() {
     };
     this.getType = function () {
         return this.type;
+    };
+
+    this.setData = function (data) {
+        this.data = data;
+    };
+    this.getData = function () {
+        return this.data;
     };
 
     this.setBeforeSend = function (beforeSend) {
@@ -78,6 +86,7 @@ function MyAjax() {
         $.ajax({
             url : this.url,
             type : this.type,
+            data : this.data,
             beforeSend : this.beforeSend,
             success : this.success,
             error : this.error

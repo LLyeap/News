@@ -8,10 +8,17 @@ use Illuminate\Support\Facades\Session;
 use App\Tools\Common;
 use App\Services\AdminService;
 
+/**
+ * 后台用户登录相关控制器
+ *
+ * Class LoginController
+ * @package App\Http\Controllers\Admin
+ */
 class LoginController extends Controller
 {
-    protected $adminServer = null;
+    protected $adminServer = null;  // AdminService
 
+    /** 构造方法 */
     public function __construct(AdminService $adminServer)
     {
         $this->adminServer = $adminServer;
@@ -92,6 +99,14 @@ class LoginController extends Controller
         //
     }
 
+    /**
+     * 返回验证码(鼠标点击验证码进行验证码刷新操作)
+     *
+     * @param $tmp  随机参数$tmp
+     * @return $this|bool|\Gregwar\Captcha\PhraseBuilder|
+     *          \Illuminate\Contracts\Routing\ResponseFactory|null|
+     *          string|\Symfony\Component\HttpFoundation\Response|void
+     */
     public function captcha($tmp)
     {
         // 判断cookie是否在5分钟内注册
@@ -104,7 +119,10 @@ class LoginController extends Controller
     }
 
     /**
-     * @return $this
+     * 对用户登录操作进行验证
+     *
+     * @param Request $request  用户登录的身份信息
+     * @return $this|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector   返回登录错误信息 | 成功跳转
      */
     public function doLogin(Request $request)
     {
@@ -142,6 +160,11 @@ class LoginController extends Controller
         }
     }
 
+    /**
+     * 后台管理员用户退出登录操作 - 清空session
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function logout()
     {
         Session::flush();

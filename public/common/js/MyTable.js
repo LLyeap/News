@@ -50,8 +50,8 @@ function MyTable() {
             }
             table += '<td>';
             table += '<div class="btn-group">';
-            table += '<button type="button" class="btn btn-default">修改</button>';
-            table += '<button type="button" class="btn btn-default">删除</button>';
+            table += '<button type="button" id="update" value="' + this.data[index]['id'] + '" class="btn btn-default" data-toggle="modal" data-target="#myModal">修改</button>';
+            table += '<button type="button" id="delete"  value="' + this.data[index]['id'] + '" class="btn btn-default">删除</button>';
             table += '</div>';
             table += '</td>';
 
