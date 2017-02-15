@@ -30,6 +30,52 @@ class DContentStore
     }
 
     /**
+     * 根据某条件获得查询得到的第一条内容信息
+     *
+     * @param $where    查询条件
+     * @return bool     查询结果
+     */
+    public function getFirstData($where)
+    {
+        if(empty($where)) return false;
+
+        return DB::table($this->table)
+            ->where($where)
+            ->first();
+    }
+
+    /**
+     * 根据某条件修改内容的信息
+     *
+     * @param $where    修改条件
+     * @param $update   修改数据
+     * @return bool     修改结果
+     */
+    public function updateData($where, $update)
+    {
+        if(empty($where) || empty($update)) return false;
+
+        return DB::table($this->table)
+            ->where($where)
+            ->update($update);
+    }
+
+    /**
+     * 根据某条件删除内容(硬删除 - 未调用)
+     *
+     * @param $where    删除条件
+     * @return bool     删除结果
+     */
+    public function deleteData($where)
+    {
+        if(empty($where)) return false;
+
+        return DB::table($this->table)
+            ->where($where)
+            ->delete();
+    }
+
+    /**
      * 获得所有内容的总条数
      *
      * @return mixed 内容总条数
@@ -52,6 +98,17 @@ class DContentStore
             ->select('id', 'title', 'keywords', 'cover', 'carousel', 'read_count')
             ->forPage($nowPage, ADMIN_PAGE_NUM)
             ->orderBy('id', 'desc')
+            ->get();
+    }
+
+    public function getDataLimit($where, $limit)
+    {
+        if(empty($where) || empty($limit)) return false;
+
+        return DB::table($this->table)
+            ->where($where)
+            ->orderBy('id', 'dese')
+            ->limit($limit)
             ->get();
     }
 }

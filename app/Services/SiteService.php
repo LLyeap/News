@@ -266,6 +266,22 @@ class SiteService
     /**                         友链                              */
     /** ******************************************************** */
 
+
+    /**
+     * 获得所有友链信息
+     *
+     * @return array 返回请求结果
+     */
+    public function getLinkInfoAll()
+    {
+        // 1. 请求数据
+        $allData  = $this->linkStore->getDataAll();
+        if(empty($allData)) return ['status' => false, 'type' => 'error', 'message' => '没有数据'];
+
+        // 2. 组织返回
+        return ['status' => true,  'message' => $allData];
+    }
+
     /**
      * 新增一条友链信息
      *
@@ -360,5 +376,24 @@ class SiteService
 
         // 3. 组织返回数据
         return ['status' => true,  'message' => '删除成功'];
+    }
+
+
+
+
+    /** ******************************************************** */
+    /**                         前端                              */
+    /** ******************************************************** */
+
+    public function getMainSiteInfo()
+    {
+        $navArray  = $this->getNavInfoAll()['message'];
+        $linkArray = $this->getLinkInfoAll()['message'];
+
+        return [
+            'navArray'  => $navArray,
+            'linkArray' => $linkArray,
+            'copyRight' => 'Copyright &copy; 2017.WangYanshuang All rights reserved.'
+        ];
     }
 }

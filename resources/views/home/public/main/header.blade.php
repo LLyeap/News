@@ -19,13 +19,9 @@
         <div class="navbar-collapse collapse">
             <!-- 左侧导航栏目开始 -->
             <ul class="nav navbar-nav" data-smartmenus-id="14739838239025269">
-                <li><a href="#">简介</a></li>
-                <li><a href="#">组织机构</a></li>
-                <li><a href="#">通知</a></li>
-                <li><a href="#">新闻</a></li>
-                <li><a href="#">下载</a></li>
-                <li><a href="#">工作研究</a></li>
-                <li><a href="#">荣誉</a></li>
+                @foreach($siteInfo['navArray'] as $nav)
+                    <li><a href="{{ $nav->url }}">{{ $nav->name }}</a></li>
+                @endforeach
             </ul> <!-- 左侧导航栏目结束 -->
 
             <!-- 右侧导航栏目开始 -->

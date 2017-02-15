@@ -8,11 +8,9 @@
             <div class="col-md-3 footer-grid">
                 <h3>友情链接</h3>
                 <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Codes</a></li>
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
+                    @foreach($siteInfo['linkArray'] as $link)
+                        <li><a href="{{ $link->url }}">{{ $link->name }}</a></li>
+                    @endforeach
                 </ul>
             </div> <!-- 友情链接结束 -->
 
@@ -61,6 +59,6 @@
 <div class="footer-bottom">
     <!-- container开始 -->
     <div class="container">
-        <p>Copyright &copy; 2017.WangYanshuang All rights reserved.</p>
+        <p>{{ $siteInfo['copyRight'] }}</p>
     </div> <!-- container结束 -->
 </div> <!-- footer底部版权声明结束 -->

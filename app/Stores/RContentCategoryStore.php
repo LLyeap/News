@@ -28,4 +28,15 @@ class RContentCategoryStore
         return DB::table($this->table)
             ->insertGetId($data);
     }
+
+    public function getDataLimit($where, $limit)
+    {
+        if(empty($where) || empty($limit)) return false;
+
+        return DB::table($this->table)
+            ->where($where)
+            ->orderBy('id', 'dese')
+            ->limit($limit)
+            ->get();
+    }
 }

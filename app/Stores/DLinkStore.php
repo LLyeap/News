@@ -5,7 +5,7 @@ namespace App\Stores;
 use Illuminate\Support\Facades\DB;
 
 /**
- * 导航CURD Store层
+ * 友链CURD Store层
  *
  * Class DCategoryStore
  * @package App\Stores
@@ -16,7 +16,19 @@ class DLinkStore
     protected $table = 'data_link_info';
 
     /**
-     * 新增一条导航信息
+     * 获得所有的友链信息
+     *
+     * @return mixed 类别信息数组
+     */
+    public function getDataAll()
+    {
+        return DB::table($this->table)
+            ->orderBy('id', 'asc')
+            ->get();
+    }
+
+    /**
+     * 新增一条友链信息
      *
      * @param $data 新增的信息内容
      * @return bool 插入是否成功
@@ -30,7 +42,7 @@ class DLinkStore
     }
 
     /**
-     * 根据某条件获得查询得到的第一条导航信息
+     * 根据某条件获得查询得到的第一条友链信息
      *
      * @param $where    查询条件
      * @return bool     查询结果
@@ -45,7 +57,7 @@ class DLinkStore
     }
 
     /**
-     * 根据某条件修改导航的信息
+     * 根据某条件修改友链的信息
      *
      * @param $where    修改条件
      * @param $update   修改数据
@@ -61,7 +73,7 @@ class DLinkStore
     }
 
     /**
-     * 根据某条件删除导航(硬删除)
+     * 根据某条件删除友链(硬删除)
      *
      * @param $where    删除条件
      * @return bool     删除结果
@@ -76,7 +88,7 @@ class DLinkStore
     }
 
     /**
-     * 获得导航总条数(分页用)
+     * 获得友链总条数(分页用)
      *
      * @return mixed    总条数
      */
@@ -87,7 +99,7 @@ class DLinkStore
     }
 
     /**
-     * 获得请求页的导航数据
+     * 获得请求页的友链数据
      *
      * @param $nowPage  请求页
      * @return mixed    该页用户数据

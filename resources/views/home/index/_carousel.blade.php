@@ -10,29 +10,21 @@
     <!-- 轮播图主内容开始 -->
     <div class="carousel-inner" role="listbox">
 
-        <div class="item active">
-            <img src="{{ asset('common/images/test.jpg') }}" alt="...">
-            <div class="carousel-caption">
-                <h3>最美好的事 莫过遇见你--校团委迎新系列活动火热进行中</h3>
-                <p> “新生活，新希望，新辉煌——青春从这里起航”，“在青春的路上遇见你，遇见最好的自己”，9月3日的吉师校园，火红的迎新条幅处处可见。来自祖国各地的2016级小鲜肉报到，为吉师注入跃动的青春活力。校团委、校学生会、校社联的迎新系列活动紧锣密鼓地全面展开，帮助新生了解校园文化，更快地融入吉林师范大学这个温暖的大家庭。校党委书记许才山、校长杨景海、副校长祖国华、党委副书记刘万民、副校长曲殿彬观看特色社团风采展。</p>
-            </div>
-        </div>
-
-        <div class="item">
-            <img src="{{ asset('common/images/test.jpg') }}" alt="...">
-            <div class="carousel-caption">
-                <h3>...</h3>
-                <p>...</p>
-            </div>
-        </div>
-
-        <div class="item">
-            <img src="{{ asset('common/images/test.jpg') }}" alt="...">
-            <div class="carousel-caption">
-                <h3>...</h3>
-                <p>...</p>
-            </div>
-        </div>
+        {{-- */ $beFirst = 1; /* --}}
+        @foreach($carouselArray as $carousel)
+            @if($beFirst == 1)
+                <div class="item active">
+                {{-- */ $beFirst = 0; /* --}}
+            @else
+                <div class="item">
+            @endif
+                    <img src="{{ $carousel->cover }}" alt="...">
+                    <div class="carousel-caption">
+                        <h3>{{ $carousel->title }}</h3>
+                        <p>{{ $carousel->keywords }}</p>
+                    </div>
+                </div>
+        @endforeach
 
     </div> <!-- 轮播图主内容结束 -->
 

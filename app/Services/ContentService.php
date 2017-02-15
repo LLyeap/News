@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Tools\Common;
 use App\Tools\CustomPage;
 use Illuminate\Support\Facades\Session;
+use App\Services\SiteService;
 use App\Stores\DContentStore;
 use App\Stores\RContentCategoryStore;
 
@@ -16,15 +17,21 @@ use App\Stores\RContentCategoryStore;
  */
 class ContentService
 {
-    protected $contentStore = null;     // DContentStore
+    protected $siteServer      = null;
+    protected $contentStore    = null;  // DContentStore
     protected $contentCategory = null;  // RContentCategoryStore
 
     /** 构造方法 */
-    public function __construct(DContentStore $contentStore, RContentCategoryStore $contentCategory)
+    public function __construct(SiteService $siteServer, DContentStore $contentStore, RContentCategoryStore $contentCategory)
     {
-        $this->contentStore = $contentStore;
+        $this->siteServer      = $siteServer;
+        $this->contentStore    = $contentStore;
         $this->contentCategory = $contentCategory;
     }
+
+    /** ******************************************************** */
+    /**                         后台                              */
+    /** ******************************************************** */
 
     /**
      * 新增一条内容
@@ -89,6 +96,46 @@ class ContentService
 
         // 4. 组织返回数据
         return ['status' => true,  'message' => ['pageInfo' => $pageInfo, 'pageData' => $pageData]];
+    }
+
+    /** ******************************************************** */
+    /**                         前台                              */
+    /** ******************************************************** */
+
+
+    public function getMainContentInfo()
+    {
+        $carouselArray = $this->contentStore->getDataLimit(['carousel' => 1], 3);
+
+        $categorys = $this->siteServer->getCategoryInfoAll()['message'];
+
+        $contentIdsArray = [];
+        foreach ($categorys as $category) {
+            $contentIds = $this->contentCategory->getDataLimit(['category_id' => $category->id], 3);
+            array_push($contentIdsArray, $contentIds);
+        }
+
+        $contentArray = [];
+        for($i = 0; $i < count($contentIdsArray); $i++) {
+            $categoryData = [];
+            foreach ($contentIdsArray[$i] as $contentId) {
+                $content = $this->contentStore->getFirstData(['id' => $contentId->content_id]);
+                array_push($categoryData, $content);
+            }
+            $categoryName = $categorys[$i]->name;
+            $categoryId    = $categorys[$i]->id;
+            $categoryData = [
+                'categoryId'   => $categoryId,
+                'categoryName' => $categoryName,
+                'categoryData' => $categoryData
+            ];
+            array_push($contentArray, $categoryData);
+        }
+
+        return [
+            'carouselArray' => $carouselArray,
+            'contentArray'  => $contentArray
+        ];
     }
 
 }

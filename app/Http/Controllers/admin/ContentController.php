@@ -22,6 +22,7 @@ class ContentController extends Controller
     {
         $this->contentServer = $contentServer;
     }
+
     /**
      * Display a listing of the resource.
      *
