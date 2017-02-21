@@ -10,7 +10,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="/main">
                 <span class="main-color text-bold">JLNU</span> 团委
             </a>
         </div> <!-- 顶部导航条logo结束 -->

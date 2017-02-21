@@ -18,9 +18,13 @@
             @else
                 <div class="item">
             @endif
-                    <img src="{{ $carousel->cover }}" alt="...">
+
+                    <img src="{{ $carousel->cover }}" width="1140px" height="470" />
+
                     <div class="carousel-caption">
-                        <h3>{{ $carousel->title }}</h3>
+                        <a href='/main/detail/{{ $carousel->id }}'>
+                            <h3>{{ $carousel->title }}</h3>
+                        </a>
                         <p>{{ $carousel->keywords }}</p>
                     </div>
                 </div>

@@ -21,10 +21,9 @@
             <!-- 位置导航结束 -->
 
             <!-- 内容主题开始 -->
-            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-            .col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8.col-md-8
+            <img src="{{ $contentInfo['content']->cover }}" width="750px" height="310px" />
+
+            {!! $contentInfo['content']->html_content !!}
             <!-- 内容主题结束 -->
 
         </div> <!-- 左侧主内容结束 -->

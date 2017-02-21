@@ -306,7 +306,7 @@ class SiteService
      */
     public function getLinkInfoList($data)
     {
-        // 1. 查询管理员用户总条数
+        // 1. 查询友链总条数
         $count  = $this->linkStore->getCount();
         if(empty($count)) return ['status' => false, 'type' => 'error', 'message' => '没有数据'];
 
@@ -314,7 +314,7 @@ class SiteService
         $totalPage = CustomPage::getTotalPage($count);
         $pageInfo = CustomPage::getSelfPageView($data['nowPage'], $totalPage, 'http://admin.mysite.com/link_info', '');
 
-        // 3. 获得请求页的管理员数据
+        // 3. 获得请求页的友链数据
         $pageData = $this->linkStore->getPageData($data['nowPage']);
 
         // 4. 组织返回数据
@@ -385,11 +385,19 @@ class SiteService
     /**                         前端                              */
     /** ******************************************************** */
 
+    /**
+     * 获得站点要显示的内容(导航 & 友链 & 版权)
+     *
+     * @return array
+     */
     public function getMainSiteInfo()
     {
+        /** 1. 获得导航内容 */
         $navArray  = $this->getNavInfoAll()['message'];
+        /** 2. 获得友链内容 */
         $linkArray = $this->getLinkInfoAll()['message'];
 
+        /** 3. 组织数据返回 */
         return [
             'navArray'  => $navArray,
             'linkArray' => $linkArray,

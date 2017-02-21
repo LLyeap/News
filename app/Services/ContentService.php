@@ -53,11 +53,12 @@ class ContentService
 
         // 3. 数据插入内容表
         $content_data = [
-            'title'     => $data['title'],
-            'keywords'  => $data['keywords'],
-            'cover'     => $data['cover'],
-            'content'   => $data['content'],
-            'carousel'  => $data['carousel'],
+            'title'        => $data['title'],
+            'keywords'     => $data['keywords'],
+            'cover'        => $data['cover'],
+            'content'      => $data['content'],
+            'html_content' => $data['editormd-html-code'],
+            'carousel'     => $data['carousel'],
         ];
         $content_id = $this->contentStore->addData($content_data);
 
@@ -103,23 +104,35 @@ class ContentService
     /** ******************************************************** */
 
 
-    public function getMainContentInfo()
+    /**
+     * 获得首页要显示的主要内容(轮播 & 类别)
+     *
+     * @return array
+     */
+    public function getIndexContentInfo()
     {
+        /** 1. 查询首页轮播图数据 */
         $carouselArray = $this->contentStore->getDataLimit(['carousel' => 1], 3);
 
+        /** 2. 查询首页要显示的类别 推荐数据库中就显示4类 */
         $categorys = $this->siteServer->getCategoryInfoAll()['message'];
 
+        /** 3. 根据类别的id 去关联表RContentCategory中查找内容的id */
         $contentIdsArray = [];
         foreach ($categorys as $category) {
             $contentIds = $this->contentCategory->getDataLimit(['category_id' => $category->id], 3);
             array_push($contentIdsArray, $contentIds);
         }
 
+        /** 4. 根据内容的id查询各类别的要显示的内容 并按类别分类  */
         $contentArray = [];
         for($i = 0; $i < count($contentIdsArray); $i++) {
             $categoryData = [];
             foreach ($contentIdsArray[$i] as $contentId) {
                 $content = $this->contentStore->getFirstData(['id' => $contentId->content_id]);
+                unset($content->content);
+                unset($content->html_content);
+                unset($content->carousel);
                 array_push($categoryData, $content);
             }
             $categoryName = $categorys[$i]->name;
@@ -132,9 +145,68 @@ class ContentService
             array_push($contentArray, $categoryData);
         }
 
+        /** 5. 组装数据返回 */
         return [
             'carouselArray' => $carouselArray,
             'contentArray'  => $contentArray
+        ];
+    }
+
+    /**
+     * 获得列表页分页数据
+     *
+     * @param $data 分页信息
+     * @param $id   类别id
+     *
+     * @return array
+     */
+    public function getListContentInfo($data, $id)
+    {
+        /** 1. 查询该类别数据总条数 */
+        $count  = $this->contentCategory->getCount(['category_id' => $id]);
+
+        /** 2. 进行分页处理 */
+        $nowPage = isset($data['nowPage']) ? $data['nowPage'] : 1;
+        $totalPage = CustomPage::getTotalPage($count);
+        $pageInfo = CustomPage::getSelfPageView($nowPage, $totalPage, 'http://www.mysite.com/main/list/' . $id, '');
+
+        /** 3. 获得请求页的该类别数据 */
+        $pageData = $this->contentCategory->getPageData($nowPage);
+
+        /** 4. 根据类别中内容的id获得内容数据 */
+        $contentArray = [];
+        foreach ($pageData as $contentId) {
+            $content = $this->contentStore->getFirstData(['id' => $contentId->content_id]);
+            unset($content->content);
+            unset($content->html_content);
+            unset($content->carousel);
+            array_push($contentArray, $content);
+        }
+
+        /** 5. 组织返回 */
+        return [
+            'pageInfo'     => $pageInfo,
+            'contentArray' => $contentArray
+        ];
+
+    }
+
+    /**
+     * 获得详情页内容
+     *
+     * @param $id       内容id
+     * @return array
+     */
+    public function getDetailContentInfo($id)
+    {
+        /** 1. 获得该条内容 */
+        $content = $this->contentStore->getFirstData(['id' => $id]);
+        unset($content->content);
+        unset($content->carousel);
+
+        /** 2. 组织返回 */
+        return [
+            'content' => $content
         ];
     }
 

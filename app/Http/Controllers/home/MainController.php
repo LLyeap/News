@@ -32,28 +32,35 @@ class MainController extends Controller
     public function getIndex()
     {
         $siteInfo    = $this->siteServer->getMainSiteInfo();
-        $contentInfo = $this->contentServer->getMainContentInfo();
-//        dd($siteInfo);
+        $contentInfo = $this->contentServer->getIndexContentInfo();
+//        dd($contentInfo);
         return view('home.index.index', ['siteInfo' => $siteInfo, 'contentInfo' => $contentInfo]);
     }
 
     /**
-     * /main/list
+     * /main/list/1
+     *
+     * @param $id   category_id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getList()
+    public function getList(Request $request, $id)
     {
+        $data = $request->except('_token');
+
         $siteInfo    = $this->siteServer->getMainSiteInfo();
-        return view('home.list.index', ['siteInfo' => $siteInfo]);
+        $contentInfo = $this->contentServer->getListContentInfo($data, $id);
+
+        return view('home.list.index', ['siteInfo' => $siteInfo, 'contentInfo' => $contentInfo]);
     }
 
     /**
      * /main/detail
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getDetail()
+    public function getDetail($id)
     {
         $siteInfo    = $this->siteServer->getMainSiteInfo();
-        return view('home.detail.index', ['siteInfo' => $siteInfo]);
+        $contentInfo = $this->contentServer->getDetailContentInfo($id);
+        return view('home.detail.index', ['siteInfo' => $siteInfo, 'contentInfo' => $contentInfo]);
     }
 }

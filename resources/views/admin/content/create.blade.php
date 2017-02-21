@@ -223,7 +223,7 @@
             height  : 500,
             syncScrolling : "single",
             toolbarAutoFixed: false,
-            saveHTMLToTextarea : false,
+            saveHTMLToTextarea : true,
             imageUpload    : true,
             imageFormats   : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
             imageUploadURL : "{{ url('upload_image') }}"

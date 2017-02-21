@@ -39,4 +39,31 @@ class RContentCategoryStore
             ->limit($limit)
             ->get();
     }
+
+    /**
+     * 获得类别数据总条数(分页用)
+     *
+     * @param $where    ['category_id' => 1]
+     * @return mixed    总条数
+     */
+    public function getCount($where)
+    {
+        return DB::table($this->table)
+            ->where($where)
+            ->count();
+    }
+
+    /**
+     * 获得请求页的类别数据
+     *
+     * @param $nowPage  请求页
+     * @return mixed    该页用户数据
+     */
+    public function getPageData($nowPage)
+    {
+        return DB::table($this->table)
+            ->forPage($nowPage, ADMIN_PAGE_NUM)
+            ->orderBy('id', 'desc')
+            ->get();
+    }
 }
