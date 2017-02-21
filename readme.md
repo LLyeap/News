@@ -1,7 +1,3 @@
-# 注意点: 
+# 注意: 
 
- - git初始化
- 
-# 步骤:
-
-1. 分块化
+ - 项目还在开发，请参考：[Laravel-CMS](http://www.loveys.site/main)
